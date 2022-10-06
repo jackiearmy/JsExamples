@@ -1,0 +1,76 @@
+body{
+  /* text-align:  center; */
+}
+.childitem{
+  border: 1px solid;
+}
+.childitem div.itemspan{
+  margin-left: 10px;
+  /* border-left: 1px solid; */
+  width: 300px;
+}
+.childitem div.itemspan span.spanitemvale{
+  margin-left: 10px;
+}
+#testdiv{
+  width: 500px;
+  height: 557px;
+  background-color:
+  wheat;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  /* text-align: center; */
+  align-content: flex-start;
+}
+.div1{
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  flex-basis: 60px;
+}
+.div2{
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  flex-basis: 60px;
+}
+.head{
+  /* position: absolute;
+  top: 0px; */
+  order: 10;
+}
+.bottom{
+  /* position: absolute; */
+  bottom: 0px;
+  order: 10;
+}
+.div_flextest{
+  width: 100%;
+  height: 150px;
+  background-color: aqua;
+  order: 100;
+  display: flex;
+  flex-direction: row;
+  flex-basis: initial;
+  align-content: center;
+  align-items: center;
+  flex-wrap:wrap;
+}
+.div_rectangle{
+  height: 50px;
+  width: 60px;
+  /* flex-grow: 1; */
+  border: solid 1px red;
+  text-align: center;
+}
+.divflexgrow{
+  height: 60px;
+  flex-grow: 2;
+}
+.divflexshrink{
+  flex-shrink: 4;
+}

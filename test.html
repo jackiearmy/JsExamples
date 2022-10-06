@@ -1,0 +1,189 @@
+﻿<html>
+
+<head>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/main.js"></script>
+  <!-- <script src="js/promisetest.js"></script> -->
+  <!-- <script src="js/Promise.js"></script> -->
+  <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+  <!-- <script src="js/EventEmit.js"></script>
+  <script src="js/vuetestjs/minVueReactive.js"></script>
+  <script src="js/minVue/index.js"></script> -->
+  <script src="js/closure/closure.js"></script>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+
+  <div id="testdiv">
+    <div class="head"> <input value="111" /> </div>
+    <div class="div1">{{key}} 1</div>
+    <div class="div2">
+      <a v-bind:href="url">{{urlName}}</a>
+      <a :href="url1">{{urlName1}}</a>
+    </div>
+    <div id="div3">
+      <input v-bind:value="inputValue" />
+    </div>
+    <div id="div4">
+      <input v-model:value="inputValue1" />
+    </div>
+    <div class="bottom"> <button id="btnPrize">抽奖</button> </div>
+    <div class="bottom"> <button id="btnMinVue">vue测试</button> </div>
+    <div class="bottom"> <button id="btnPromise">promise测试</button> </div>
+    <div class="bottom"> <button id="btnClosure">闭包测试</button> </div>
+    <div class="bottom"> <button id="btnPromiseTesting">宏任务微任务</button> </div>
+
+    <div class="div_flextest">
+      <div class="div_rectangle"> 1 </div>
+      <div class="div_rectangle divflexgrow"> 2 </div>
+      <div class="div_rectangle divflexshrink"> 3 </div>
+      <div class="div_rectangle divflexshrink"> 4 </div>
+      <div class="div_rectangle divflexgrow"> 5 </div>
+      <div class="div_rectangle"> 6 </div>
+      <div class="div_rectangle"> 7 </div>
+      <div class="div_rectangle"> 8 </div>
+      <div class="div_rectangle"> 9 </div>
+      <div class="div_rectangle"> 0 </div>
+    </div>
+
+  </div>
+</body>
+<script>
+  var fullScreenFun = function () {
+    var el = document.documentElement;
+    var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+    if (typeof rfs != "undefined" && rfs) {
+      rfs.call(el);
+    };
+  }
+  // fullScreenFun();
+
+
+  Vue.config.productionTip = false;
+  var vm = new Vue({
+    el: "#testdiv",
+    data: {
+      key: "hello",
+      url: "https://www.baidu.com/",
+      urlName: "百度",
+      url1: "https://www.baidu.com/",
+      urlName1: "直播吧",
+      inputValue: "tc jiayou!",
+      inputValue1: "you are the best!"
+    }
+  });
+
+  let button = document.getElementById("btnPrize");
+  button && button.addEventListener("click", function () {
+    //EventEmit
+    // let ee = new EventEmit();
+    // let cb = (name)=>{
+    //   console.log(`hello ${name}.`)
+    // }
+    // ee.on('hello',cb);
+    // ee.emit('hello');
+
+    //VUE test
+    //window.defineReactive(obj);
+    let obj = {
+      a: 1,
+      b: {
+        c: 2
+      }
+    }
+    observe(obj);
+    obj.c = 3;
+    console.log(obj);
+  });
+  var pAllFun = function () {
+    const p1 = Promise.resolve(1);
+    const p2 = Promise.reject(2);
+    const p3 = Promise.resolve(3);
+    const pAll = Promise.all([p1, p2, p3]);
+    console.log("pAll", pAll);
+
+    const p4 = new Promise((resolve, rejected) => {
+      const arr = [1, 2, 3];
+      resolve(arr);
+    });
+    console.log("p4", p4);
+  }
+
+  //vue
+  let btnVue = document.getElementById("btnMinVue");
+  btnVue && btnVue.addEventListener("click", function () {
+
+  });
+
+  //promise test
+  let btnTestPromise = document.getElementById("btnPromise");
+  btnTestPromise && btnTestPromise.addEventListener("click", function () {
+    // prizeFun();
+
+    // var apromise = ajaxPromise('https://api.apiopen.top/getJoke');
+    // apromise.then((value)=>{
+    //   console.log(value);
+    // },(reason)=>{
+    //   console.warn(reason);
+    // })
+
+    //执行器函数
+    // let p = promiseExcutor();
+    // console.log(p);
+
+    //promise.All
+    // promiseAllFun();
+
+    // //promise.Race
+    // promiseRaceFun();
+
+    // promiseReturnTest();
+    // const myPromise = new Promise((resolve,reject)=>{
+    //   resolve(1);
+    //   reject(1);
+    //   console.log("reject函数执行之后")
+    // });
+    // console.log(myPromise);
+    // myPromise.then(value=>{
+    //   console.log("onResolve1",value);
+    //   throw "ee"
+    // },reason=>{
+    //   console.log("onReject1",reason);
+    // }).then(value=>{
+    //   console.log("onResolve2",value);
+    // },reason=>{
+    //   console.log("onReject2",reason);
+    // });
+
+
+    //Promise.All
+    //pAllFun();
+
+    //async
+    console.log('start');
+    let promiseR = asyncTest();
+    console.log(promiseR);
+    promiseR.then((value) => {
+      console.log(value);
+    }, (reason) => {
+      console.log(reason);
+    });
+    console.log('end');
+  });
+
+  let btnClosureTest = document.getElementById("btnClosure");
+  btnClosureTest && btnClosureTest.addEventListener("click", function () {
+    hd();
+  });
+
+  let btnPromiseTesting = document.getElementById("btnPromiseTesting");
+  btnPromiseTesting && btnPromiseTesting.addEventListener("click", function () {
+    promiseTesting();
+  });
+  
+</script>
+
+</html>
